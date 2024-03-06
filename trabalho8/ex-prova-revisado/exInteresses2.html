@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="campo">Interesses</label>
+    <input id="campo" name="campo">
+    <ol></ol>
+
+
+    <script>
+        const campo = document.querySelector('input')
+        campo.addEventListener('keyup',(elem)=>{
+            if(elem.key === 'Enter'){
+                const spanItem = document.createElement('span')
+                const buttonItem = document.createElement('button')
+                const liItem = document.createElement('li')
+
+                spanItem.textContent = campo.value
+                buttonItem.textContent = 'x'
+
+                liItem.appendChild(spanItem)
+                liItem.appendChild(buttonItem)
+
+                const lista = document.querySelector('ol')
+                lista.appendChild(liItem)
+ 
+
+            }
+        })
+
+    </script>
+</body>
+</html>

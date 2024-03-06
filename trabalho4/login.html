@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <link rel="stylesheet" href="css/login.css">
+        <link rel="stylesheet" href="css/style.css">
+        <meta charset="UTF-8">
+        <meta name="description" content="Clínica ABC é uma das mais prestigiadas e bla bla bla, todos recomendam ela">
+        <title>Cadastro - Clínica ABC</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    </head>
+
+    <body>
+        <header>
+
+        </header>
+
+        <main>
+            <form action="cadastraCliente.php" enctype="multipart/form-data" method="post">
+                
+                <p>
+                    <label for="login_usuario">Usuário:</label>
+                    <input type="text" id="login_usuario" name="login_usuario" maxlength="50" minlength="2" autofocus required>
+                </p>
+
+                <p>
+                    <label for="login_senha">Senha:</label>
+                    <input type="password" id="login_senha" name="login_senha" maxlength="50" minlength="2">
+                </p>
+
+                <button>
+                    <!--Como colocar uma palavra do lado do desenho-->
+                        <span class="material-symbols-outlined">
+                            login
+                        </span> Enviar
+                </button>
+                
+            </form>
+
+        </main>
+    </body>
+</html>

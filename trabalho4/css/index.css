@@ -1,0 +1,35 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    background-color: rgb(192, 192, 192);
+    padding: 1%;
+    text-align: center;
+}
+
+section{
+    padding-bottom: 10%;
+}
+
+p:first-of-type{
+    color: #491e0a;
+}
+
+p{
+    line-height: 1.5;
+}
+
+p + p{
+    text-indent: 10%;
+}
+
+footer{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    
+}
+
+

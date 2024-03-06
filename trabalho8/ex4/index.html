@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/style.css">
+        <meta charset="UTF-8">
+
+        <title>Cadastro - Clínica ABC</title>
+
+    </head>
+
+    <body>
+        <header>
+
+        </header>
+
+        <main>
+            <form name="cadastro" action="login.php" method="post">
+                <h1>Cadastro de Usuário</h1>
+
+                <p>
+                    <label for="login_usuario">Usuário:</label>
+                    <input type="text" id="login_usuario" name="login_usuario" maxlength="50" minlength="2" autofocus required>
+                    <span></span>
+                </p>
+
+                <p>
+                    <label for="login_senha">Senha:</label>
+                    <input type="password" id="login_senha" name="login_senha" maxlength="50" minlength="2">
+                    <span></span>
+                </p>
+
+                <p>
+                    <label for="login_email">Email:</label>
+                    <input type="password" id="login_email" name="login_email" maxlength="50" minlength="2">
+                    <span></span>
+                </p>
+
+                <button> Cadastrar </button>
+                
+            </form>
+
+
+            <script>
+                document.forms.cadastro.onsubmit = validaForm;
+                
+                function validaForm(e){
+                    let form = e.target;
+                    let formValido = true;
+
+                    // inicializa as constantes onde vai ficar o conteudo, caso algum campo nao seja preenchido
+                    const spanUsuario = form.login_usuario.nextElementSibling;
+                    const spanSenha = form.login_senha.nextElementSibling;
+                    const spanEmail = form.login_email.nextElementSibling;
+
+                    // inicialmente nao tem conteúdo
+                    spanUsuario.textContent = "";
+                    spanSenha.textContent = "";
+                    spanEmail.textContent = "";
+
+                    // se o valor registrado na parte de login/senha/email for vazio, mostra o erro
+                    if(form.login_usuario.value === ""){
+                        spanUsuario.textContent = 'Usuário deve ser preenchido';
+                        formValido = false;
+                    }
+                    if(form.login_senha.value === ""){
+                        spanSenha.textContent = 'Senha deve ser preenchido';
+                        formValido = false;
+                    }
+                    if(form.login_email.value === ""){
+                        spanEmail.textContent = 'Email deve ser preenchido';
+                        formValido = false;
+                    }
+
+
+                    if(!formValido)
+                        e.preventDefault();
+
+                }
+
+
+            </script>
+        </main>
+    </body>
+</html>

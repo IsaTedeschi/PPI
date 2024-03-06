@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Ex3</title>
+</head>
+<body>
+    <div id="conteiner">
+        
+        <div id="altura">
+            <label for="altura" class="altura">Altura (cm):</label>
+            <p>
+                <input id="altura" type="text" name="altura" placeholder="164" required>
+            </p>
+        </div>  
+
+        <div id="genero">
+            <label class="sexo">Gênero:</label>
+            <p>
+                <input type="radio" id="feminino" name="sexo" value="feminino">
+                <label for="feminino">Feminino</label> 
+            </p>
+            <p>
+                <input type="radio" id="masculino" name="sexo" value="masculino">
+                <label for="masculino">Masculino</label>    
+            </p>
+        </div>
+
+        <p><button type="button">Clique aqui para cálculo</button></p>
+
+        <p>Seu peso ideal é: <span id="pesoIdeal"></span> </p>
+
+
+        <script>
+            const botao = document.querySelector("button");
+            botao.onclick = function() {
+                const campoAltura = document.querySelector("input");
+                const nodeRadio = document.querySelector('input[name="sexo"]:checked');
+                let pesoIdeal = 0;
+
+                let altura = parseInt(campoAltura.value);
+                
+                if (nodeRadio.value == 'masculino'){
+                    pesoIdeal = 52 + (0.75 * (altura - 152.4))
+                } else if (nodeRadio.value == 'feminino'){
+                    pesoIdeal = 52 + (0.67 * (altura - 152.4))
+                }
+                
+                const parSaida = document.querySelector("#pesoIdeal");
+                parSaida.textContent = pesoIdeal.toFixed(3) + 'kg';
+            };
+        </script>
+
+    </div>
+
+    <p id="image">Imagem da Depuração</p>
+    <p><img src="images/foto1.PNG" alt="Depuração"></p>
+
+</body>
+</html>

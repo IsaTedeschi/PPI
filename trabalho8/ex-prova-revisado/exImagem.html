@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .item{
+            background-color: rgb(236, 131, 131);
+        }
+        .destaca{
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="item">
+        <h1>texto</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis consectetur obcaecati repellendus sint magni nam, incidunt ipsa molestias necessitatibus corporis magnam voluptatibus atque cupiditate deserunt. Soluta assumenda eos repellendus quidem!</p>
+    </div>
+    <div class="item">
+        <h1>texto</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis consectetur obcaecati repellendus sint magni nam, incidunt ipsa molestias necessitatibus corporis magnam voluptatibus atque cupiditate deserunt. Soluta assumenda eos repellendus quidem!</p>
+    </div>
+    <div class="item">
+        <h1>texto</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Debitis consectetur obcaecati repellendus sint magni nam, incidunt ipsa molestias necessitatibus corporis magnam voluptatibus atque cupiditate deserunt. Soluta assumenda eos repellendus quidem!</p>
+    </div>
+
+
+    <script>
+        const itens = document.querySelectorAll(".item")
+        for (let item of itens){
+            item.onmouseenter = () =>{
+                item.classList.add('destaca')
+            }
+            item.onmouseleave = () =>{
+                item.classList.remove('destaca')
+            }
+        }
+    </script>
+</body>
+</html>

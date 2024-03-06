@@ -1,0 +1,22 @@
+section:has(> h2){
+    text-align: justify;
+    font-family:'Times New Roman', Times, serif ;
+}
+
+li:first-child{
+    font-weight:bold;
+    font-style: italic;
+}
+
+p:first-of-type{
+    color: #491e0a;
+}
+
+p{
+    margin-bottom: 0;
+}
+
+p + p{
+    text-indent: 10%;
+}
+

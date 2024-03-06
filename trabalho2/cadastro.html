@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Clínica ABC é uma das mais prestigiadas e bla bla bla, todos recomendam ela">
+    <title>Cadastro - Clínica ABC</title>
+</head>
+
+<body>
+    <header>
+        <h1>Clínica ABC Health</h1>
+
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Área de Cadastro da Clínica</h2>
+
+        <form action="cadastraCliente.php" enctype="multipart/form-data" method="post">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+
+                <p><input type="text" id="readonly" value="Obrigado por se cadastrar!" name="readonly" readonly></p>
+
+                <p>
+                    <label for="nome_cliente">Nome:</label>
+                    <input type="text" id="nome_cliente" name="nome_cliente" maxlength="50" minlength="2" autofocus
+                        required>
+                </p>
+
+                <p>
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" required>
+                </p>
+
+
+                <p>
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="Formato 123.123.123-00" required>
+                </p>
+
+
+                <p>
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="idade" name="idade" required>
+                </p>
+
+
+                <p>
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </p>
+
+
+                <p>
+                    <label for="data_nasc">Data de Nascimento:</label>
+                    <input type="date" id="data_nasc" name="data_nasc">
+                </p>
+
+
+                <fieldset>
+                    <legend>Sexo:</legend>
+                    <p>
+                        <input type="radio" id="feminino" name="sexo" value="feminino">
+                        <label for="feminino">Feminino</label>
+                    </p>
+
+                    <p>
+                        <input type="radio" id="masculino" name="sexo" value="masculino">
+                        <label for="masculino">Masculino</label>
+                    </p>
+
+                    <p>
+                        <input type="radio" id="sem_resp" name="sexo" value="sem_resp">
+                        <label for="sem_resp">Prefiro não dizer</label>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Estado Civil:</legend>
+
+                    <p>
+                        <input type="radio" id="solteiro" name="estado_civil" value="solteiro">
+                        <label for="solteiro">Solteiro</label>
+                    </p>
+
+                    <p>
+                        <input type="radio" id="casado" name="estado_civil" value="casado">
+                        <label for="casado">Casado</label>
+                    </p>
+
+                    <p>
+                        <input type="radio" id="divorciado" name="estado_civil" value="divorciado">
+                        <label for="divorciado">Divorciado</label>
+                    </p>
+
+                </fieldset>
+            </fieldset>
+
+            <fieldset>
+                <legend>Enderço</legend>
+
+                <p>
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" required>
+                </p>
+
+                <p>
+                    <label for="logradouro">Tipo de Logradouro: </label>
+                    <select name="tipo_lograd" required>
+                        <option value="">Selecione</option>
+                        <option value="rua">Rua</option>
+                        <option value="avenida">Avenida</option>
+                        <option value="praca">Praça</option>
+                    </select>
+                </p>
+
+
+                <p>
+                    <label for="logradouro">Logradouro: </label>
+                    <input type="text" id="logradouro" name="logradouro" required>
+                </p>
+
+
+                <p>
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" required>
+                </p>
+
+
+                <p>
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </p>
+
+                <p>
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" name="estado" required>
+                </p>
+
+            </fieldset>
+
+            <fieldset>
+                <legend>Informações Adicionais</legend>
+
+                <fieldset>
+                    <legend>Interesses</legend>
+
+                    <p>
+                        <input type="checkbox" id="filmes" name="filmes" value="filmes">
+                        <label for="filmes">Filmes</label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="informatica" name="informatica" value="informatica"><label
+                            for="informatica">Informática</label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="games" name="games" value="games"><label for="games">Games</label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="livros" name="livros" value="livros">Livros<label
+                            for="livros"></label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" id="roupas" name="roupas" value="roupas"><label
+                            for="roupas">Roupas</label>
+                    </p>
+
+                </fieldset>
+
+                <p>
+                    <label for="info_compl">Informações Complementares:</label>
+                </p>
+                    <textarea id="info_compl" name="info_compl" rows="10" cols="50"></textarea>
+                
+
+
+                <p>
+                    <label for="foto_cadastro">Foto de Cadastro:</label>
+                    <input type="file" accept=".png, .jpg, .jpeg" id="foto_cadastro">
+                </p>
+
+                <input type="hidden" id="hidden_space" name="hidden_space" value="hidden_space">
+
+
+            </fieldset>
+
+            <button>Enviar</button>
+        </form>
+
+
+    </main>
+
+
+    <footer>
+        <br>
+        <address>
+            João Naves de Ávila, Santa Mônica, Uberlândia <br>
+            Telefone: <a href="tel:(34)99999-9999">(34) 99999-9999</a> <br>
+        </address>
+
+    </footer>
+
+
+</body>
+
+</html>

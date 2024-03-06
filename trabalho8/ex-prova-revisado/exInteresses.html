@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="int">Interesses:</label>
+    <input id="int" name="int">
+    <ol></ol>
+
+    <script>
+        const intItem = document.querySelector('#int')
+        intItem.addEventListener('keyup', (event)=>{
+            if(event.key === 'Enter'){
+                const liItem = document.createElement('li')
+                const spanItem = document.createElement('span')
+                const botaoItem = document.createElement('button')
+
+                spanItem.textContent = intItem.value
+                botaoItem.textContent = 'X'
+
+                liItem.appendChild(spanItem)
+                liItem.appendChild(botaoItem)
+
+                const listaItens = document.querySelector('ol')
+                listaItens.appendChild(liItem)
+
+                botaoItem.onclick = () =>{
+                    liItem.remove()
+                }
+
+                intItem.value = ''
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+h1{
+    text-align: center;
+}
+
+nav ul{
+    list-style: none;
+    font-size: 17px;
+}
+
+a:link, a:visited{
+    color: #2b2929;
+    display: inline-block;
+}
+
+li a:hover{
+    color: #A0522D;
+}
+
+body{
+    background-color: #FAF9F6;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+footer{
+    text-align: center;
+    margin-top: 5%;
+}

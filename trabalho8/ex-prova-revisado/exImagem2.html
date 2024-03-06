@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            background-color: yellowgreen;
+        }
+        .destaca{
+            border: 3px solid green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Texto</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam hic molestias necessitatibus modi aperiam corrupti exercitationem culpa voluptates veritatis, rerum ab a. Dolores atque fugiat eaque sed, amet eos modi?</p>
+    </div>
+    <div>
+        <h1>Texto</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam hic molestias necessitatibus modi aperiam corrupti exercitationem culpa voluptates veritatis, rerum ab a. Dolores atque fugiat eaque sed, amet eos modi?</p>
+    </div>
+    <div>
+        <h1>Texto</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam hic molestias necessitatibus modi aperiam corrupti exercitationem culpa voluptates veritatis, rerum ab a. Dolores atque fugiat eaque sed, amet eos modi?</p>
+    </div>
+
+
+    <script>
+        /* PRIMEIRA FORMA
+        const itens = document.querySelectorAll(".item")
+        for (let item of itens){
+            item.onmouseenter = () =>{
+                item.classList.add('destaca')
+            }
+            item.onmouseleave = () =>{
+                item.classList.remove('destaca')
+            }
+        }
+        */
+
+        /* SEGUNDA FORMA */
+        const itens = document.querySelectorAll('div')
+        itens.forEach((item)=>{
+            item.addEventListener('mouseenter',()=>{
+                item.style.border = '2px solid green'
+            })
+            item.addEventListener('mouseleave',()=>{
+                item.style.border = 'none'
+            })
+        })
+
+    </script>
+</body>
+</html>

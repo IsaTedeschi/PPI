@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <title>Exercicio 3</title>
+</head>
+<body>
+    <main>
+        <label for="interesses">Interesses:</label>
+        <input type="text" id="interesses" name="interesses" maxlength="25" minlength="2" autofocus required>
+
+        <ol></ol>
+    
+
+    </main>
+
+    <script>
+        //Depois de lido o input é verificado se foi apertado algum botão
+        const campoInteresse = document.querySelector("input"); 
+        campoInteresse.addEventListener("keyup", e => {
+            
+            if (e.key === "Enter") {
+                //são criados elementos de Lista para identificar os itens de interesse
+                // Span - onde os itens são escritos
+                // Button - onde são eliminados os itens
+                const novoli = document.createElement("li"); 
+                const novoSpan = document.createElement("span"); 
+                const novoBotao = document.createElement("button");
+        
+                // campoInteresse é o valor digitado no input
+                // Esse valor se torna o textContent do novoSpan
+                // O valor do novoBotao se torna o icon de X
+                novoSpan.textContent = campoInteresse.value; 
+                novoBotao.textContent = '❌';
+
+                // novoLi são novos elementos de lista adicionados com o novo input lido
+                // da mesma forma, são criados novos botoes de deletar
+                novoli.appendChild(novoSpan); 
+                novoli.appendChild(novoBotao);
+
+                // no item da lista é colocado o Span + Botao
+                const listaInteresses = document.querySelector("ol"); 
+                listaInteresses.appendChild(novoli);
+                
+                // função de ao apertar o botão vai remover o item da lista
+                novoBotao.onclick = function () {               
+                    listaInteresses.removeChild(novoli);
+                }
+                // Outra opção: novoLt.remove();
+                // Outra opção: novoLt.parentNode.removeChild(novoLt);
+                campoInteresse.value = '';
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .pg{
+            display: none;
+        }
+        .visible{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="trocaPag('pg1')">Pagina1</button>
+        <button onclick="trocaPag('pg2')">Pagina2</button>
+        <button onclick="trocaPag('pg3')">Pagina3</button>
+    </div>
+
+    <div id="pg1" class="pg">
+        <h1>Titulo1</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ipsa numquam maiores totam aperiam asperiores voluptate, facere vero dignissimos laboriosam sapiente excepturi illum, vel culpa accusamus rem tempora eveniet veritatis.</p>
+    </div>
+    <div id="pg2" class="pg">
+        <h1>Titulo2</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ipsa numquam maiores totam aperiam asperiores voluptate, facere vero dignissimos laboriosam sapiente excepturi illum, vel culpa accusamus rem tempora eveniet veritatis.</p>
+    </div>
+    <div id="pg3" class="pg">
+        <h1>Titulo3</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus ipsa numquam maiores totam aperiam asperiores voluptate, facere vero dignissimos laboriosam sapiente excepturi illum, vel culpa accusamus rem tempora eveniet veritatis.</p>
+    </div>
+
+    <script>
+        window.onload = () =>{
+            trocaPag('pg1')
+        }
+
+        const itens = document.querySelectorAll('.pg')
+
+        function trocaPag(pgId){
+            itens.forEach((elem)=>{
+                if(elem.id == pgId){
+                    elem.classList.add('visible')
+                }else{
+                    elem.classList.remove('visible')
+                }
+            })
+        }
+
+
+    </script>
+
+</body>
+</html>

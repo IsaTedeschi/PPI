@@ -1,0 +1,40 @@
+header, nav, footer{
+    background-color: #2b2929;
+    color: whitesmoke;
+    border-radius: 7px;
+    text-align: center;
+    padding: 15px;
+    width: 70%;
+    margin: 10px auto;
+
+}
+
+ul{
+    padding: 0;
+}
+
+
+main{
+    background-color: whitesmoke;
+    border-radius: 7px;
+    padding: 15px;
+    margin: 10px auto;
+}
+
+table{
+    margin: auto;
+}
+
+img{
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px grey;
+    margin: 10px;
+}
+
+footer{
+    padding: 15px;
+}
+
+.destaca{
+    box-shadow: 0 0 20px red;
+}

@@ -1,0 +1,58 @@
+@media screen and (min-width: 600px) {
+    body{
+        width: 95%;
+    }
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+header, nav, footer{
+    background-color: #2b2929;
+    color: whitesmoke;
+    border-radius: 7px;
+    text-align: center;
+    padding: 15px;
+    width: 70%;
+    margin: 10px auto;
+}
+
+main{
+    background-color: whitesmoke;
+    border-radius: 7px;
+    padding: 15px;
+    margin: 10px auto;
+    
+    justify-content: space-between
+}
+
+
+#imgConteiner{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+img{
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px grey;
+
+    flex: 1;
+    
+}
+
+
+
+#img_lst{
+    align-items:end ;
+}
+
+
+footer{
+    padding: 15px;
+}

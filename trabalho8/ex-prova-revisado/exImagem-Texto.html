@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .invisible{
+            display: none;
+        }
+        div{
+            background-color: rebeccapurple;
+        }
+        .destaca{
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div class="bloco">
+        <h1>titulo</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam incidunt consequatur odit explicabo itaque, obcaecati enim aut sint excepturi quis vero, consequuntur, iusto dolorem voluptate nisi suscipit. Veritatis, temporibus adipisci.</p>
+    </div>
+    <div class="bloco">
+        <h1>titulo</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam incidunt consequatur odit explicabo itaque, obcaecati enim aut sint excepturi quis vero, consequuntur, iusto dolorem voluptate nisi suscipit. Veritatis, temporibus adipisci.</p>
+    </div>
+    <div class="bloco">
+        <h1>titulo</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam incidunt consequatur odit explicabo itaque, obcaecati enim aut sint excepturi quis vero, consequuntur, iusto dolorem voluptate nisi suscipit. Veritatis, temporibus adipisci.</p>
+    </div>
+
+    <script>
+        //pegar os titulos
+        //toda fez que fazer o clique neles vai sumir o p
+
+        const itens = document.querySelectorAll('h1')
+
+        /*itens.forEach((elem)=>{
+            elem.addEventListener('click', ()=>{
+                const texto = elem.nextElementSibling
+                texto.classList.toggle('invisible')
+            })
+        })*/
+
+        itens.forEach((elem)=>{
+            const texto = elem.nextElementSibling
+            elem.addEventListener('click', ()=>{
+                texto.classList.add('invisible')
+            })
+            elem.addEventListener('dblclick', ()=>{
+                texto.classList.remove('invisible')
+            })
+
+        })
+
+        //pegar as divs, colocar cor quando passar o mause por cima
+        const blocos = document.querySelectorAll('.bloco')
+        blocos.forEach((bloco)=>{
+            bloco.addEventListener('mouseenter', ()=>{
+                bloco.classList.add('destaca')
+            })
+            bloco.addEventListener('mouseleave', ()=>{
+                bloco.classList.remove('destaca')
+            })
+        })
+
+
+    </script>
+</body>
+</html>

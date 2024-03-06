@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/index.css">
+    <title>Exercicio 5</title>
+</head>
+<body>
+    <main>
+        <h1>A FACOM</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+        <button type="button" id="btnOpenModal">Abrir Modal</button>
+
+    </main>
+
+    <!--Janela Modal-->
+    <div id="modalTeste" class="modal">
+        <div class="modalContent">
+            <h2>Olá! Seja bem-vindo</h2>
+            <button class="buttonClose">OK</button>
+        </div>
+    </div>
+
+    <script>        
+            //"pegando" o div com todo o conteudo do modal e o botao de fechar
+            const modal = document.querySelector(".modal");
+            const buttonClose = modal.querySelector(".buttonClose");
+
+            //"Ouve" quando falar para fechar o display fica como nenhum
+            buttonClose.addEventListener("click", function(){
+                modal.style.display = 'none';
+            })
+
+            //"Ouve" quando clicar em open modal a janela vai aparecer
+            const buttonOpenModal = document.getElementById("btnOpenModal");
+            buttonOpenModal.addEventListener("click", function(){
+                modal.style.display = 'block';
+            })
+
+
+    </script>
+
+</body>
+</html>

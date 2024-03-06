@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .invisible{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Titulo1</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo voluptatum quo dolor hic in ipsam adipisci odio commodi nihil distinctio dolores quibusdam, exercitationem, quaerat veniam sed corporis facere magni fugit?</p>
+    <h1>Titulo2</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo voluptatum quo dolor hic in ipsam adipisci odio commodi nihil distinctio dolores quibusdam, exercitationem, quaerat veniam sed corporis facere magni fugit?</p>
+    <h1>Titulo3</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo voluptatum quo dolor hic in ipsam adipisci odio commodi nihil distinctio dolores quibusdam, exercitationem, quaerat veniam sed corporis facere magni fugit?</p>
+    <h1>Titulo4</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo voluptatum quo dolor hic in ipsam adipisci odio commodi nihil distinctio dolores quibusdam, exercitationem, quaerat veniam sed corporis facere magni fugit?</p>
+
+
+    <script>
+        //ler os titulos
+        //para cada um apagar o filho se tiver clique
+        const titulos = document.querySelectorAll('h1')
+
+        /* PRIMEIRA FORMA
+        for(let titulo of titulos){
+            titulo.onclick = () =>{
+                titulo.nextElementSibling.classList.toggle('invisible')
+                
+            }
+        }*/
+
+        /* SEGUNDA FORMA
+        for(let titulo of titulos){
+            titulo.addEventListener('click', ()=>{
+                titulo.nextElementSibling.classList.toggle('invisible')
+            })
+        }*/
+
+        /* TERCEIRA FORMA */
+        for(let titulo of titulos){
+            const texto = titulo.nextElementSibling
+            titulo.addEventListener('click', ()=>{
+                texto.style.display = 'none'
+            })
+            titulo.addEventListener('dblclick', () =>{
+                texto.style.display = 'block'
+            })
+        }
+
+    </script>
+
+</body>
+</html>
