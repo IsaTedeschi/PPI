@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap - Conteiner</title>
+
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../../trabalho6/css/index.css">
+
+</head>
+<body>
+
+    <main class="conteiner">
+        <form action="cadastraContato.php" method="post">
+
+            <div class="row">
+                <div class="col-8">
+                    <label for="nome" class="form-label">Nome Completo:</label>
+                    <input type="text" class="form-control" id="nome" name="nome">
+                </div>
+
+                <div class="col">
+                    <label for="cpf" class="form-label"> CPF:</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf">
+                </div>    
+            </div>
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <label for="email" class="form-label"> E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                
+                <div class="col-sm">
+                    <label for="senha" class="form-label"> Senha:</label>
+                    <input type="password" class="form-control" id="senha" name="senha">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="cep" class="form-label"> CEP:</label>
+                    <input type="text" class="form-control" id="cep" name="cep">
+                </div>
+
+                <div class="col-sm">
+                    <label for="endereco" class="form-label"> Endereço:</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Avenida Jão Naves de Ávila">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <label for="bairro" class="form-label"> Bairro:</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro">
+                </div>
+
+                <div class="col-sm">
+                    <label for="cidade" class="form-label"> Cidade:</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade">
+                </div>
+
+                <div class="col-sm">
+                    <label for="estado" class="form-label">Estado:</label>
+                    <select name="estado" id="estado" class="form-select">
+                        <option value="">Selecione</option>
+                        <option value="ac">AC</option>
+                        <option value="al">AL</option>
+                        <option value="ap">AP</option>
+                        <option value="am">AM</option>
+                        <option value="ba">BA</option>
+                        <option value="ce">CE</option>
+                        <option value="df">DF</option>
+                        <option value="es">ES</option>
+                        <option value="go">GO</option>
+                        <option value="ma">MA</option>
+                        <option value="mt">MT</option>
+                        <option value="ms">MS</option>
+                        <option value="mg">MG</option>
+                        <option value="pa">PA</option>
+                        <option value="pb">PB</option>
+                        <option value="pr">PR</option>
+                        <option value="pe">PE</option>
+                        <option value="pi">PI</option>
+                        <option value="rj">RJ</option>
+                        <option value="rn">RN</option>
+                        <option value="rs">RS</option>
+                        <option value="ro">RO</option>
+                        <option value="rr">RR</option>
+                        <option value="sc">SC</option>
+                        <option value="sp">SP</option>
+                        <option value="se">SE</option>
+                        <option value="to">TO</option>
+                    </select>
+                </div>
+            </div>
+
+            <!--
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="termos" name="term">
+                        <label for="termos" class="form-check-label">Concordo com os termos</label>
+                    </div>
+                </div>
+            </div>
+           -->
+            
+            <div class="row">
+                <div class="col-sm">
+                    <button type="submit" class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        </svg>
+                        Cadastrar
+                    </button>
+                </div>  
+            </div>
+        </form>
+    </main>
+
+    <!--Bootstrap Javascript-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
