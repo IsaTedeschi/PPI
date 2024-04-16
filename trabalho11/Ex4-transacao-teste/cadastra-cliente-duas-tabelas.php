@@ -4,18 +4,29 @@ require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
 // Resgata os dados do cliente
+$codigo = $_POST["codigo"] ?? "";
 $nome = $_POST["nome"] ?? "";
-$cpf  = $_POST["cpf"] ?? "";
+$sexo  = $_POST["sexo"] ?? "";
 $email = $_POST["email"] ?? "";
-$senha = $_POST["senha"] ?? "";
+$telefone = $_POST["telefone"] ?? "";
+
+$peso = $_POST["peso"] ?? "";
 $altura = $_POST["altura"] ?? "";
+$tipo_sang = $_POST["tipo_sang"] ?? "";
+
+//----------------------
+$cpf  = $_POST["cpf"] ?? "";
+$senha = $_POST["senha"] ?? "";
 $estadocivil = $_POST["estadocivil"] ?? "";
 $datanascimento = $_POST["datanascimento"] ?? "";
+$endereco = $_POST["endereco"] ?? "";
+$bairro = $_POST["bairro"] ?? "";
+//----------------------
 
 // Resgata os dados do endereço do cliente
 $cep = $_POST["cep"] ?? "";
-$endereco = $_POST["endereco"] ?? "";
-$bairro = $_POST["bairro"] ?? "";
+$logradouro = $_POST["logradouro"] ?? "";
+$estado = $_POST["estado"] ?? "";
 $cidade = $_POST["cidade"] ?? "";
 
 // calcula um hash de senha seguro para armazenar no BD
@@ -31,6 +42,21 @@ $sql2 = <<<SQL
     (cep, endereco, bairro, cidade, id_cliente)
   VALUES (?, ?, ?, ?, ?)
   SQL;
+
+
+$sql3 = <<<SQL
+  INSERT INTO pessoa 
+    (nome, cpf, email, telefone, sexo, cep, logradouro, estado, cidade)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+  SQL;
+
+$sql4 = <<<SQL
+  INSERT INTO paciente
+    (altura, peso, tipo_sang, codigo)
+  VALUES (?, ?, ?, ?)
+  SQL;
+
+
 
 try {
   $pdo->beginTransaction();
@@ -55,6 +81,23 @@ try {
   if (!$stmt2->execute([
     $cep, $endereco, $bairro, $cidade, $idNovoCliente
   ])) throw new Exception('Falha na segunda inserção');
+
+
+  $stmt3 = $pdo->prepare($sql3);
+  if (!$stmt3->execute([
+    $nome, $cpf, $email, $telefone, $sexo, $cep, $logradouro, $estado, $cidade
+  ])) throw new Exception('Falha na segunda inserção');
+
+
+  
+  $stmt4 = $pdo->prepare($sql4);
+  if (!$stmt4->execute([
+    $altura, $peso, $tipo_sang, $idNovoCliente
+  ])) throw new Exception('Falha na segunda inserção');
+
+
+
+  
 
   // Efetiva as operações
   $pdo->commit();

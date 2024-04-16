@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Desenvolvimento Web com AJAX</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+  <style>
+    body {
+      padding-top: 2rem;
+    }
+    h3 {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h3>Preenchendo o endereço com Ajax</h3>
+  
+    <form class="row g-3">
+      <div>
+        <label for="cep" class="form-label">Informe o CEP no formato xxxxx-xxx (Ex. 38400-100)</label>
+        <input type="text" class="form-control" id="cep" name="cep">
+      </div>
+      <div>
+        <label for="rua" class="form-label">Rua:</label>
+        <input type="text" class="form-control" id="rua" name="rua">
+      </div>
+      <div>
+        <label for="bairro" class="form-label">Bairro:</label>
+        <input type="text" class="form-control" id="bairro" name="bairro">
+      </div>
+      <div>
+        <label for="cidade" class="form-label">Cidade:</label>
+        <input type="text" class="form-control" id="cidade" name="cidade">
+      </div>
+    </form>
+  
+  </div>
+
+  <script>
+    // função de busca do endereço dado o CEP 
+    function buscaEndereco(valorCep) {
+      //tamanho mínimo do cep
+      if (valorCep.length != 9)
+        return;
+    
+      // cria um objeto JavaScript com os dados necessários para a requisição --> formando um json
+      let objetoJS = {
+        cep: valorCep,
+        email: "fulano@mail.com",
+        apikey: "abcdefg123456"
+      }         
+
+      // cria uma nova requisição XMLHttpRequest
+      let xhr = new XMLHttpRequest();
+      // método (POST) e destino da requisição
+      xhr.open("POST", "busca-endereco.php"); 
+
+      // os dados enviados estão em formato JSON
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      // função se a requisição for feita com sucesso
+      xhr.onload = function () {
+        // converte a resposta da requisição de JSON para um objeto JavaScript
+        const endereco = JSON.parse(xhr.responseText);
+        
+        //pega os elementos do form (rua, bairro e cidade)
+        //eles vão ser preenchidos automaticamente com os resultados da requisição 
+        let form = document.querySelector("form");
+        form.rua.value = endereco.rua;
+        form.bairro.value = endereco.bairro;
+        form.cidade.value = endereco.cidade;
+      }
+
+      // se tiver erro na requisição
+      xhr.onerror = function () {
+        console.error("Erro de rede - requisição não finalizada");
+      };
+
+      // envia a requisição com os dados convertidos para JSON
+      xhr.send(JSON.stringify(objetoJS));
+    }
+
+    // quando a página é carregada
+    window.onload = function () {
+      //ao colocar o cep, já vai aparecer as outras informações de endereço
+      const inputCep = document.querySelector("#cep");
+      inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+    }
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de cliente com endereço - Exemplo de transação</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <style>
+    body {
+      padding: 1rem;
+    }
+
+    button {
+      margin-top: 1rem;
+    }
+
+    fieldset {
+      padding: 1rem;
+      border: 0.5 solid gray;
+      background-color: #eee;
+    }
+
+    legend {
+      background-color: #555;
+      color: #fff;
+      padding: 3px 8px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <main>
+      <form action="cadastra-cliente-duas-tabelas.php" method="POST">
+
+        <fieldset>
+          <legend>Dados do Cliente</legend>
+
+          <div class="row g-3">
+            <!-- Nome e CPF -->
+            <div class="col-9">
+              <label for="nome" class="form-label">Nome completo</label>
+              <input type="text" name="nome" class="form-control" id="nome">
+            </div>
+            <div class="col-3">
+              <label for="cpf" class="form-label">CPF</label>
+              <input type="text" name="cpf" class="form-control" id="cpf">
+            </div>
+
+            <!-- E-mail e senha -->
+            <div class="col-4">
+              <label for="altura" class="form-label">altura</label>
+              <input type="text" name="altura" class="form-control" id="altura">
+            </div>
+            <div class="col-4">
+              <label for="peso" class="form-label">peso</label>
+              <input type="text" name="peso" class="form-control" id="peso">
+            </div>
+            <div class="col-4">
+              <label for="tipo_sang" class="form-label">tipo_sang</label>
+              <input type="text" name="tipo_sang" class="form-control" id="tipo_sang">
+            </div>
+
+        </fieldset>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </form>
+
+      <a href="../index.html">Menu de opções</a>
+    </main>
+  </div>
+
+</body>
+
+</html>

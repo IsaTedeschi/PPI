@@ -3,58 +3,61 @@
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
-// Resgata os dados do cliente
+// Resgata os dados da pessoa
 $nome = $_POST["nome"] ?? "";
-$cpf  = $_POST["cpf"] ?? "";
+$sexo  = $_POST["sexo"] ?? "";
 $email = $_POST["email"] ?? "";
-$senha = $_POST["senha"] ?? "";
-$altura = $_POST["altura"] ?? "";
-$estadocivil = $_POST["estadocivil"] ?? "";
-$datanascimento = $_POST["datanascimento"] ?? "";
+$telefone = $_POST["telefone"] ?? "";
 
-// Resgata os dados do endereço do cliente
+// Resgata os dados do paciente
+$peso = $_POST["peso"] ?? "";
+$altura = $_POST["altura"] ?? "";
+$tipo_sanguineo = $_POST["tipo_sanguineo"] ?? "";
+
+// Resgata os dados do endereco do paciente
 $cep = $_POST["cep"] ?? "";
-$endereco = $_POST["endereco"] ?? "";
-$bairro = $_POST["bairro"] ?? "";
+$logradouro = $_POST["logradouro"] ?? "";
 $cidade = $_POST["cidade"] ?? "";
+$estado = $_POST["estado"] ?? "";
 
 // calcula um hash de senha seguro para armazenar no BD
 $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
 
 $sql1 = <<<SQL
-  INSERT INTO cliente (nome, cpf, email, hash_senha, data_nascimento, estado_civil, altura)
-  VALUES (?, ?, ?, ?, ?, ?, ?)
+  INSERT INTO pessoa (nome, sexo, email, telefone, 
+                       cep, logradouro, cidade, estado)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)
   SQL;
 
 $sql2 = <<<SQL
-  INSERT INTO endereco_cliente 
-    (cep, endereco, bairro, cidade, id_cliente)
-  VALUES (?, ?, ?, ?, ?)
+  INSERT INTO paciente 
+    (peso, altura, tipo_sanguineo, codigo)
+  VALUES (?, ?, ?, ?)
   SQL;
 
 try {
   $pdo->beginTransaction();
 
-  // Inserção na tabela cliente
+  // Inserção na tabela pessoa
   // Neste caso utilize prepared statements para prevenir
   // inj. de S Q L, pois estamos inserindo dados 
   // fornecidos pelo usuário
   $stmt1 = $pdo->prepare($sql1);
   if (!$stmt1->execute([
-    $nome, $cpf, $email, $hashsenha,
-    $datanascimento, $estadocivil, $altura
-  ])) throw new Exception('Falha na primeira inserção');
+    $nome, $sexo, $email, $telefone,
+    $cep, $logradouro, $cidade, $estado
+  ])) throw new Exception('Falha na primeira inserção (pessoa)');
 
-  // Inserção na tabela endereco_cliente
-  // Precisamos do id do cliente cadastrado, que
+  // Inserção na tabela pessoa
+  // Precisamos do id da pessoa cadastrada, que
   // foi gerado automaticamente pelo MySQL
   // na operação acima (campo auto_increment), para
   // prover valor para o campo do tipo chave estrangeira
-  $idNovoCliente = $pdo->lastInsertId();
+  $idNovaPessoa = $pdo->lastInsertId();
   $stmt2 = $pdo->prepare($sql2);
   if (!$stmt2->execute([
-    $cep, $endereco, $bairro, $cidade, $idNovoCliente
-  ])) throw new Exception('Falha na segunda inserção');
+    $peso, $altura, $tipo_sanguineo, $idNovaPessoa
+  ])) throw new Exception('Falha na segunda inserção (paciente)');
 
   // Efetiva as operações
   $pdo->commit();

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotação de Ações</title>
+</head>
+<body>
+    <h1>Cotação de Ações</h1>
+    <!-- inserir o código da ação -->
+    <form id="formCotacao">
+        <label for="codigoAcao">Insira o código da ação (5 letras):</label>
+        <input type="text" id="codigoAcao" name="codigoAcao" maxlength="5">
+    </form>
+
+    <!-- exibir a cotação da ação -->
+    <div id="resultadoCotacao"></div>
+
+    <script>
+        // busca e mostra a cotação da ação
+        function buscarCotacaoAcao(codigo) {
+            const chaveApi = "D57Y8BXCATSRYQCO";
+            const url = `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${codigo}.SA&apikey=${chaveApi}`;
+
+            // requisição fetch para a API
+            fetch(url)
+                .then(response => response.json()) // Converte para JSON
+                .then(data => {
+                    // Exibe a cotação da ação na página
+                    document.getElementById("resultadoCotacao").innerText = `Cotação atual da ação ${codigo}: ${data["Global Quote"]["05. price"]}`;
+                })
+                .catch(error => {
+                    // Exibe um erro caso ocorra um problema durante a busca
+                    console.error('Erro ao buscar cotação:', error);
+                    document.getElementById("resultadoCotacao").innerText = 'Erro ao buscar cotação';
+                });
+        }
+
+        // Evento acionado quando o usuário termina de digitar o código da ação
+        document.getElementById("codigoAcao").addEventListener("input", function() {
+            const codigo = this.value.toUpperCase();
+            if (codigo.length === 5) {
+                buscarCotacaoAcao(codigo); // Chama a função para buscar a cotação da ação
+            }
+        });
+    </script>
+</body>
+</html>

@@ -22,7 +22,8 @@ $cidade = $_POST["cidade"] ?? "";
 $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
 
 $sql1 = <<<SQL
-  INSERT INTO cliente (nome, cpf, email, hash_senha, data_nascimento, estado_civil, altura)
+  INSERT INTO cliente (nome, cpf, email, hash_senha, 
+                       data_nascimento, estado_civil, altura)
   VALUES (?, ?, ?, ?, ?, ?, ?)
   SQL;
 

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rolagem Infinita</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background-color: #dedede;
+      font-family: Helvetica;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 3rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #888;
+    }
+
+    .item {
+      background-color: white;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .item-image {
+      width: 150px;
+      height: 150px;
+      margin: 0 2rem;
+    }
+
+    .item-name {
+      font: 2em Verdana;
+      color: #888;
+    }
+
+    .item-price {
+      font: 2em Verdana;
+      color: darkgreen;
+      margin-left: 2rem;
+    }
+
+    .item-price::before {
+      content: 'R$ ';
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="products">
+    <h2>Nossos produtos</h2>
+
+    <template id="template">
+      <div class="item">
+        <img class="item-image" src="images/{{prod-image}}"></img>
+        <span class="item-name">{{prod-name}}</span>
+        <span class="item-price">{{prod-price}}</span>
+      </div>
+    </template>
+
+  </section>
+
+  <script>
+
+    // renderiza os produtos na página
+    function renderProducts(newProducts) {
+
+      // de onde os produtos são renderizados
+      const prodsSection = document.getElementById("products");
+
+      // pega o template para os produtos
+      const template = document.getElementById("template");
+
+      for (let product of newProducts) {
+
+        // substitui as variáveis do template pelos dados do produto atual
+        let html = template.innerHTML
+          .replace("{{prod-image}}", product.imagePath)
+          .replace("{{prod-name}}", product.name)
+          .replace("{{prod-price}}", product.price);
+
+        // insere o HTML renderizado na seção de produtos
+        prodsSection.insertAdjacentHTML("beforeend", html);
+      };
+    }
+
+    // função assíncrona para carregar produtos do servidor
+    async function loadProducts() {
+
+      try {
+        // faz requisição para pegar os produtos do servidor
+        let response = await fetch("more-products.php");
+
+        // vê se a resposta deu OK
+        if (!response.ok) throw new Error(response.statusText);
+
+        // converte para JSON
+        var products = await response.json();
+      }
+      catch (e) {
+        // se tiver, exibe o erro no console e retorna
+        console.error(e);
+        return;
+      }
+
+      // Chama a função para renderizar os produtos na página
+      renderProducts(products);
+    }
+
+    // Evento que é acionado quando a janela é carregada
+    window.onload = function () {
+      // Carrega os produtos quando a página é carregada
+      loadProducts();
+    }
+
+    // Evento que é acionado quando a janela é rolada
+    window.onscroll = function () {
+      // Verifica se o usuário chegou ao final da página
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        // Se sim, carrega mais produtos
+        loadProducts();
+      }
+    };
+
+  </script>
+
+
+</body>
+
+</html>

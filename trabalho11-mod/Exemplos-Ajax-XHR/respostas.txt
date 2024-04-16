@@ -1,0 +1,28 @@
+5)c)  i. "200 OK".
+5)c) ii. "Content-Type: text/html; charset=UTF-8" - pois é um texto HTML padrão.
+5)c)iii. "Uberlândia".
+5)c) iv. "Server: nginx".
+5)c)  v. "Content-Type: text/html; charset=UTF-8" - sim, possui, porque toda resposta HTTP que possui conteúdo deve ter algum valor de "Content-Type" para indicar o tipo do conteúdo.
+
+5)d)  i. "404 Not Found".
+5)d) ii. "Content-Type: text/html; charset=UTF-8" - pois é um texto HTML padrão.
+5)d)iii. "38400-500 is not available" - valor que foi escolhido no .php para quando der erro.
+5)d) iv. "Server: nginx".
+5)d)  v. "Content-Type: text/html; charset=UTF-8" - sim, possui, porque toda resposta HTTP que possui conteúdo deve ter algum valor de "Content-Type" para indicar o tipo do conteúdo.
+
+5)e) "500 Internal Server Error". Não há conteúdo no corpo da resposta HTTP, visto aliás pelo "Content-Length: 0".
+
+5)f) "Status Code: 200 OK".
+
+O conteúdo da resposta HTTP é:
+
+"<br/>
+<b>Parse error</b>
+:  syntax error, unexpected token &quot;echo &quot;in <b>/home/vol1000_8/infinityfree.com/if0_35774618/htdocs/trabalho11/Exemplos-Ajax-XHR/Ex2-busca-cidade-erro/busca-cidade.php</b>
+on line <b>8</b>
+<br/>".
+
+O InfinityFreeApp "esconde" o erro ao encapsular o erro "500 Internal Server Error" em uma resposta HTTP que sempre funcionará (sempre 200 OK) formatada como uma estrutura em HTML e colocará essa estrutura na árvore DOM logo após de onde o erro ocorreu na página.
+
+Essa configuração é útil para o desenvolver debugar facilmente (porém só deve ser usada em instâncias de desenvolvimento). Isto é, nunca deve ser colocada em instâncias de produção, pois informações sensíveis da operação do sistema ficará visível para qualquer usuário (logo, sensível a ataques de usuários mal intencionados).
+

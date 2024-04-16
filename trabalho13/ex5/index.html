@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Produtos por Marca</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Selecione uma marca de produto:</h1>
+        <select id="marcaSelect">
+            <option value="">Selecione uma marca</option>
+            <option value="Marca1">Marca1</option>
+            <option value="Marca2">Marca2</option>
+            <option value="Marca3">Marca3</option>
+            <option value="Marca4">Marca4</option>
+            <option value="Marca5">Marca5</option>
+            <option value="Marca6">Marca6</option>
+        </select>
+
+        <div id="resultado">
+
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const marcaSelect = document.getElementById('marcaSelect');
+        const resultadoDiv = document.getElementById('resultado');
+
+        marcaSelect.addEventListener('change', async () => {
+            const marcaSelecionada = marcaSelect.value;
+            if (!marcaSelecionada) {
+                resultadoDiv.textContent = '';
+                return;
+            }
+
+            try {
+                const response = await fetch(`busca-produto.php?marca=${marcaSelecionada}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    resultadoDiv.textContent = data.error;
+                } else {
+                    // Remove todos os filhos existentes de resultadoDiv
+                    while (resultadoDiv.firstChild) {
+                        resultadoDiv.removeChild(resultadoDiv.firstChild);
+                    }
+
+                    const heading = document.createElement('h2');
+                    heading.textContent = 'Produtos:';
+                    resultadoDiv.appendChild(heading);
+
+                    const list = document.createElement('ul');
+                    data.forEach(produto => {
+                        const listItem = document.createElement('li');
+                        listItem.innerHTML = `<strong>Nome:</strong> ${produto.nome}, <strong>Descrição:</strong> ${produto.descricao}`;
+                        list.appendChild(listItem);
+                    });
+                    resultadoDiv.appendChild(list);
+                }
+            } catch (error) {
+                resultadoDiv.textContent = 'Ocorreu um erro ao buscar os dados do servidor.';
+                console.error('Erro:', error);
+            }
+        });
+    });
+</script>
+
+</body>
+
+</html>

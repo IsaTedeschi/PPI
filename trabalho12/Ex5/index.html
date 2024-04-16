@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Encadeando requisições assíncronas</title>
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.5rem;
+      background-color: #ddd;
+      color: #555;
+      margin: 0;
+    }
+
+    main {
+      width: 60%;
+      margin: 0;
+      padding: 2% 4%;
+      background-color: #eee;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      font-size: 5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <main>
+    <h2>Temperatura Local: <span id="temp">...</span></h2>
+    <h2>Velocidade do Vento: <span id="wind">...</span></h2>
+  </main>
+  <script>
+    // função responsável por buscar o clima local
+    // OBS: A função não trata todos os erros
+    function buscaClimaLocal() {
+      // realiza uma requisição fetch para obter os dados de localização com base no endereço IP do usuário
+      fetch('https://ipapi.co/json/')
+        // converte da requisição para JSON
+        .then(response => response.json())
+        // utiliza os dados de localização obtidos para fazer outra requisição fetch para obter os dados de previsão do tempo
+        .then(data => fetch(`https://api.open-meteo.com/v1/forecast?latitude=${data.latitude}&longitude=${data.longitude}&current_weather=true`))
+        // converte a segunda requisição para JSON
+        .then(response => response.json())
+        // muda o HTML com a temperatura e a velocidade do vento atuais
+        .then(data => {
+          document.getElementById("temp").textContent = data.current_weather.temperature + '°';
+          document.getElementById("wind").textContent = data.current_weather.windspeed + ' km/h';
+        })
+        .catch(error => console.log(error));
+    }
+
+    // Executa a função de busca do clima local quando a página é carregada
+    window.onload = function () {
+      buscaClimaLocal();
+    }
+</script>
+
+
+</body>
+
+</html>
